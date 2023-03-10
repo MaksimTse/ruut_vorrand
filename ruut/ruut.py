@@ -30,7 +30,7 @@ def quad():
         result_lbl.configure(text=f'Lahendus D: {D:.2f}, pole tõelisi juured', bg='lightgreen')
     x0=(-b)/2*a
     y0=a*x0**2+b*x0+c
-    x=np.arange(x0-15,x0+15,1)
+    x=np.arange(x0-16,x0+16,1)
     y=a*x**2+b*x+c
     fig=plt.figure()
     plt.plot(x,y,'r-d')
@@ -44,29 +44,31 @@ def quad():
 
 root = Tk()
 root.title('Rootvõrrandid')
-root.geometry('300x300')
+root.geometry('400x400')
+root.configure(bg='#cccccc')
 
-a_lbl = Label(root, text='sisesta a:',fg='#d30085',font='Arial 15',height=1,width=15)
-a_lbl.pack()
+a_lbl = Label(root, text='sisesta a:',fg='#d30085',bg='#f1ffed',font='Arial 15',height=1,width=15)
+a_lbl.pack(pady=10)
 a_entry = Entry(root, bg='#99ffe5')
-a_entry.pack()
+a_entry.pack(pady=10)
 
-b_lbl = Label(root, text='sisesta b:', fg='#d30085',font='Arial 15',height=1,width=15)
-b_lbl.pack()
+b_lbl = Label(root, text='sisesta b:', fg='#d30085',bg='#f1ffed',font='Arial 15',height=1,width=15)
+b_lbl.pack(pady=10)
 b_entry = Entry(root, bg='#99ffe5')
-b_entry.pack()
+b_entry.pack(pady=10)
 
-c_lbl = Label(root, text='sisesta c:', fg='#d30085',font='Arial 15',height=1,width=15)
-c_lbl.pack()
+c_lbl = Label(root, text='sisesta c:', fg='#d30085',bg='#f1ffed',font='Arial 15',height=1,width=15)
+c_lbl.pack(pady=10)
 c_entry = Entry(root, bg='#99ffe5')
-c_entry.pack()
+c_entry.pack(pady=10)
 
-solve_button = Button(root, text='Lahenda', command=quad)
-solve_button.pack()
+solve_button = Button(root, text='Lahenda', command=quad,height=2,width=15,font='Arial 12',bg='#98ff8c',fg='#063800')
+solve_button.pack(pady=10)
 
 
-result_lbl = Label(root, text='')
-result_lbl.pack()
+result_lbl = Label(root, text='',bg='#cccccc')
+
+result_lbl.pack(pady=5)
 
 
 root.mainloop()
