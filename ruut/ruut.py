@@ -1,46 +1,59 @@
-import tkinter as tk
-import math
+from tkinter import *
+from math import *
 
-def quadratic_equation():
+def quad():
+    if a_entry.get()=='' :
+        a_entry.configure(bg='red')
+    else:
+        a_entry.configure(bg='lightblue')
+    if b_entry.get()=='' :
+        b_entry.configure(bg='red')
+    else:
+        b_entry.configure(bg='lightblue')
+    if c_entry.get()=='' :
+        c_entry.configure(bg='red')
+    else:
+        c_entry.configure(bg='lightblue')
     a = float(a_entry.get())
     b = float(b_entry.get())
     c = float(c_entry.get())
     
-    discriminant = b**2 - 4*a*c
+    D = b**2 - 4*a*c
 
-    if discriminant >= 0:
-        root1 = (-b + math.sqrt(discriminant)) / (2*a)
-        root2 = (-b - math.sqrt(discriminant)) / (2*a)
-        result_label.configure(text=f"RESULT D: {discriminant:.2f}, x1: {root1:.2f}, x2: {root2:.2f}", bg='lightgreen', fg='blue')
+    if D >= 0:
+        x1 = (-b + sqrt(D)) / (2*a)
+        x2 = (-b - sqrt(D)) / (2*a)
+        result_lbl.configure(text=f"TULEMUS - D: {D:.2f}, x1: {x1:.2f}, x2: {x2:.2f}", bg='lightgreen', fg='blue')
     else:
-        result_label.configure(text=f"Lahendus D: {discriminant:.2f}, No real roots", bg='blue')
+        result_lbl.configure(text=f"Lahendus D: {D:.2f}, pole tõelisi juured", bg='lightgreen')
+
     
 
-root = tk.Tk()
-root.title("Quadratic Equation Solver")
+root = Tk()
+root.title("Rootvõrrandid")
 root.geometry('300x300')
 
-a_label = tk.Label(root, text="a:",fg='#d30085',font='Arial 15',height=1,width=15)
-a_label.pack()
-a_entry = tk.Entry(root, bg='#99ffe5')
+a_lbl = Label(root, text="sisesta a:",fg='#d30085',font='Arial 15',height=1,width=15)
+a_lbl.pack()
+a_entry = Entry(root, bg='#99ffe5')
 a_entry.pack()
 
-b_label = tk.Label(root, text="sisesta b:", fg='#d30085',font='Arial 15',height=1,width=15)
-b_label.pack()
-b_entry = tk.Entry(root, bg='#99ffe5')
+b_lbl = Label(root, text="sisesta b:", fg='#d30085',font='Arial 15',height=1,width=15)
+b_lbl.pack()
+b_entry = Entry(root, bg='#99ffe5')
 b_entry.pack()
 
-c_label = tk.Label(root, text="sisesta c:", fg='#d30085',font='Arial 15',height=1,width=15)
-c_label.pack()
-c_entry = tk.Entry(root, bg='#99ffe5')
+c_lbl = Label(root, text="sisesta c:", fg='#d30085',font='Arial 15',height=1,width=15)
+c_lbl.pack()
+c_entry = Entry(root, bg='#99ffe5')
 c_entry.pack()
 
-solve_button = tk.Button(root, text="Salvesta", command=quadratic_equation)
+solve_button = Button(root, text="Lahenda", command=quad)
 solve_button.pack()
 
 
-result_label = tk.Label(root, text="")
-result_label.pack()
+result_lbl = Label(root, text="")
+result_lbl.pack()
 
 
 root.mainloop()
